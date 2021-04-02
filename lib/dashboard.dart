@@ -11,6 +11,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         title:
+          // menyusun tulisan secara horizontal dan di tengah
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           Text('Dashboard'),
         ]),
@@ -24,23 +25,24 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       drawer: new Drawer(
+        //menggunakan listview karena di dalam drawer terdapat banyak menu
         child: new ListView(children: <Widget>[
-          new UserAccountsDrawerHeader(
+          new UserAccountsDrawerHeader( //UserAccountsDrawerHeader sudah ada di fungsi widget
               accountName: new Text("I Made Dwi Ananta Yoga"),
               accountEmail: new Text("dwi.ananta@undiksha.ac.id"),
               currentAccountPicture: new GestureDetector(
-                onTap: () {},
+                onTap: () {},//dapat melakukan apa 
                 child: new CircleAvatar(
                   backgroundImage:new NetworkImage(
                     'https://1.bp.blogspot.com/-nF8MxGGYIf8/YFKU3DdhghI/AAAAAAAAAFw/rDB9Z-9WqPE7z8yC8jt-CZ_A86ZQlLjPACLcBGAsYHQ/s1458/IMG_20200620_115228_648.jpg'),
                 ),
               ),
-              decoration: BoxDecoration(
+              decoration: BoxDecoration( //untuk background foto di drawer
                 image: DecorationImage(
                     image: AssetImage('assets/appimages/latar.jpeg'),
                     fit: BoxFit.cover),
               )),
-          new ListTile(
+          new ListTile( // listtile merupakan anak dari listview yang berupa menu
             title: new Text('Notifications'),
             trailing: new Icon(Icons.notifications_none),
           ),
@@ -61,19 +63,19 @@ class _DashboardState extends State<Dashboard> {
                 'Aplikasi angkringan ini merupakan aplikasi yang menjual aneka ragam makanan dan minuman, biasanya hal ini hanya dijual di pinggir jalan tetapi dengan adanya aplikasi ini membuat pembeli bisa memesan melalui aplikasi'),
           ),
         ]),
-      ),
+      ),//enddrawer
 //seluruh body dibungkus colum
       body: new ListView(
         children: <Widget>[
           Image.asset("assets/appimages/angkringan.jpeg"),
-//setiap bagian pada body dipisahkan container
+//setiap bagian pada body dipisahkan container yang berisikan ringkasan aplikasi
           Container(
             color: Colors.yellow[300],
             padding: const EdgeInsets.all(10),
 //untuk membuat tampilan secara horizontal digunakan row
             child: Row(
               children: [
-                Expanded(
+                Expanded( // dihabiskan agar tidak terlalu kekiri dan terlalu kekanan
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

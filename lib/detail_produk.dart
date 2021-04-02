@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class DetailProduk extends StatefulWidget {
   DetailProduk(
+    // untuk menampung parameter yang dikirim dari produklist, harus disesuaikan dengan yg ada di produklist
       {Key key, this.name, this.description, this.price, this.image, this.star})
       : super(key: key);
+    //variabel untuk menampung parameter
   final String name;
   final String description;
   final int price;
@@ -15,11 +17,14 @@ class DetailProduk extends StatefulWidget {
 }
 
 class _DetailProdukState extends State<DetailProduk> {
+  //inisialisasi variabel star
   final childrenstar = <Widget>[];
   @override
   Widget build(BuildContext context) {
+    //membuat star secara dinamis sesuai jumlah star yang dikirim dari produklist
     for (var i = 0; i < widget.star; i++) {
       childrenstar.add(new Icon(
+        //memasukan icon start ke cariabel childrenstar
         Icons.star,
         size: 15,
         color: Colors.yellow,
@@ -27,6 +32,7 @@ class _DetailProdukState extends State<DetailProduk> {
     }
     return Scaffold(
       appBar: new AppBar(
+        //title detail produk yang isinya name produk dalam widget text
         title: new Text("${widget.name}"),
       ),
       body: new Container(
@@ -55,7 +61,7 @@ class _DetailProdukState extends State<DetailProduk> {
                   ),
                   new Container(
                     child: new Text(
-                      this.widget.price.toString(),
+                      this.widget.price.toString(), //menampilkan harga
                       style: new TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
@@ -72,7 +78,7 @@ class _DetailProdukState extends State<DetailProduk> {
               width: double.infinity,
 //maximal height
               height: double.maxFinite,
-              child: new Text(widget.description),
+              child: new Text(widget.description),// menampilkan deskripsi
             )
           ],
         ),
